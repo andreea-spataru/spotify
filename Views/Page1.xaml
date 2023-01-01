@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:spotify.Models"
+             xmlns:icon="clr-namespace:spotify.Utils"
+             x:Class="spotify.Views.Page1"
+             Title="">
+
+    <VerticalStackLayout BackgroundColor="Black" Padding="3,30">
+        <Grid RowDefinitions="*"
+              ColumnDefinitions="*,*,*,*">
+            <Label Grid.Row="0"
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   Text="Good afternoon"
+                   TextColor="White"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   FontFamily=""/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   FontFamily="MOON"
+                   Text="{x:Static icon:IconFont.Bell}"
+                   TextColor="White"
+                   SemanticProperties.HeadingLevel="Level1"
+                   FontSize="32"
+                   HorizontalOptions="Center"/>
+            <Label Grid.Row="0"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   FontFamily="MOON"
+                   Text="{x:Static icon:IconFont.Clock}"
+                   TextColor="White"
+                   SemanticProperties.HeadingLevel="Level1"
+                   FontSize="32"
+                   HorizontalOptions="Center"/>
+            <Label Grid.Row="0"
+                   Grid.Column="3"
+                   Grid.ColumnSpan="2"
+                FontFamily="MOON"
+                Text="{x:Static icon:IconFont.Settings}"
+                TextColor="White"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center"/>
+        </Grid>
+
+        <StackLayout Margin="10,30" Spacing="5" Orientation="Horizontal">
+            <Frame BackgroundColor="#2a2a2a" BorderColor="Black" Padding="15"
+                   HasShadow="True"
+                   CornerRadius="30"
+                   WidthRequest="80"
+                   HeightRequest="48">
+
+                <Label Grid.Row="0"
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="1"
+                       Text="Music"
+                       TextColor="White"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+            </Frame>
+            <Frame BackgroundColor="#2a2a2a" BorderColor="Black" Padding="15"
+                   HasShadow="True"
+                   CornerRadius="30"
+                   WidthRequest="180"
+                   HeightRequest="48">
+                <Label Grid.Row="0"
+                            Grid.Column="1" 
+                            Grid.ColumnSpan="2"
+                            Text="Podcasts &amp; Shows"
+                            TextColor="White"
+                            FontSize="15"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"/>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Margin="5,5" Spacing="10" Orientation="Horizontal">
+            <CollectionView>
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type model:Spotify}">
+                        <model:Spotify Name="Liked Songs"
+                                   Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                        <model:Spotify Name=" Discover Weekly"
+                                   Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                        <model:Spotify Name="Your Top Songs 2022"
+                                  Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                        <model:Spotify Name="Daily Mix 1"
+                                   Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                        <model:Spotify Name="Zonga Music"
+                                   Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                        <model:Spotify Name="Zonga Music (2)"
+                                  Image="https://raw.githubusercontent.com/CristiSandu/UIWorkshop/master/Assets%20for%20homework/cover.jpg"/>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Grid.Column="0" Padding="1" BackgroundColor="#2a2a2a" BorderColor="Black"
+                               CornerRadius="10">
+                            <Grid ColumnDefinitions="auto, *"
+                          RowDefinitions="*, *">
+                                <Image Grid.RowSpan="2"
+                               Source="{Binding Image}" HeightRequest="60"
+                               WidthRequest="60" Aspect="AspectFill"/>
+                                <Label Grid.Column="1"
+                               Text="{Binding Name}" TextColor="White"
+                                       VerticalOptions="End"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       FontFamily="" Margin="5"
+                                       HeightRequest="20" WidthRequest="110"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" 
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </StackLayout>
+
+        <Grid>
+            <StackLayout Margin="5,10" Spacing="5" Orientation="Horizontal">
+                <Frame BorderColor="Black"
+                   HasShadow="True"
+                   Margin="10"
+                   CornerRadius="50"
+                   WidthRequest="60"
+                   HeightRequest="60">
+                    <Image 
+                       Source="https://bonjovi1.github.io/assets/img/thesedays.jpg"
+                       Aspect="AspectFill"
+                       HeightRequest="60"
+                       WidthRequest="60"/>
+                </Frame>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="65"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label VerticalOptions="Center"
+                           Grid.Column="1"
+                           Text="MORE LIKE"
+                           TextColor="DarkGray"
+                           FontSize="14"
+                           HeightRequest="40"
+                           FontFamily=""/>
+                    <Label VerticalOptions="End"
+                           Grid.Column="1"
+                           Text="Bon Jovi"
+                           FontSize="25"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Start"
+                           HeightRequest="40"
+                           FontFamily=""/>
+                </Grid>
+
+            </StackLayout>
+        </Grid>
+
+
+
+
+    </VerticalStackLayout>
+
+</ContentPage>
